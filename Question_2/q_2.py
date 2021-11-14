@@ -13,18 +13,20 @@
 from bs4 import BeautifulSoup
 import requests
 
+headings = []
+
 
 def read_page_contents():
     """ scrape web page contents """
 
-    html_doc = requests.get("http://192.168.45.130")
+    html_doc = requests.get("http://192.168.178.122")
     soup = BeautifulSoup(html_doc.text, 'html.parser')
 
     """searching all headings by class : section_headers"""
-    headers = soup.find_all(class_="section_header")
-    headers_count = len(headers)
+    for headers in soup.find_all(class_="section_header"):
+        headings.append(headers.text.strip())
 
-    print('There are: {} headings'.format(headers_count))
+    print('This are all headings name: {}'.format(headings))
 
     """count word Apache2"""
     pattern = 'Apache2'
