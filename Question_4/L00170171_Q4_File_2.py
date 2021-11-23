@@ -13,7 +13,7 @@
 import socket
 import subprocess
 import sys
-import re
+
 from datetime import datetime
 
 
@@ -28,8 +28,6 @@ def port_scan():
     # Ask for input
     remote_server = input('Enter remote host to scan: ')
     remote_server_ip = socket.gethostbyname(remote_server)
-
-
 
     # Print a nice banner with information on which host we are about to scan
     print(" ")
